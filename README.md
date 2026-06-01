@@ -10,7 +10,7 @@ Modern AI Workspace built with cutting-edge UI/UX, intelligent chatbot interacti
 
 NASERIAI is a modern AI-powered workspace that combines conversational AI, business analytics, content creation tools, subscription management and advanced user settings into a single premium platform.
 
-Designed with a futuristic glassmorphism interface, responsive layouts, animated interactions, and a professional SaaS dashboard experience.
+Designed with a futuristic glassmorphism interface, responsive layouts, animated interactions and a professional SaaS dashboard experience.
 
 ---
 
