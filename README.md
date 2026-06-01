@@ -1,4 +1,4 @@
-# 🚀 NASERIAI
+# NASERIAI
 
 ### Premium AI-Powered Workspace & Chat Platform
 
@@ -6,7 +6,7 @@ Modern AI Workspace built with cutting-edge UI/UX, intelligent chatbot interacti
 
 ---
 
-## ✨ Overview
+## Overview
 
 NASERIAI is a modern AI-powered workspace that combines conversational AI, business analytics, content creation tools, subscription management, and advanced user settings into a single premium platform.
 
@@ -14,9 +14,9 @@ Designed with a futuristic glassmorphism interface, responsive layouts, animated
 
 ---
 
-## 🌟 Core Features
+##  Core Features
 
-### 🤖 AI Chat Assistant
+###  AI Chat Assistant
 
 * Intelligent AI Chat Interface
 * Voice Assistant Support
@@ -29,7 +29,7 @@ Designed with a futuristic glassmorphism interface, responsive layouts, animated
 * Download Generated Files
 * Responsive Chat UI
 
-### 📊 Analytics Dashboard
+### Analytics Dashboard
 
 * Revenue Monitoring
 * AI Usage Tracking
@@ -39,7 +39,7 @@ Designed with a futuristic glassmorphism interface, responsive layouts, animated
 * Interactive Charts
 * Real-Time Reporting
 
-### 🛠 Content Tools
+###  Content Tools
 
 * Content Creation Tools
 * AI Writing Utilities
@@ -49,7 +49,7 @@ Designed with a futuristic glassmorphism interface, responsive layouts, animated
 * View Controls
 * AI Insights
 
-### 💎 Subscription Management
+###  Subscription Management
 
 * Subscription Plans
 * Billing Overview
@@ -57,7 +57,7 @@ Designed with a futuristic glassmorphism interface, responsive layouts, animated
 * Usage Tracking
 * Payment Information
 
-### ⚙️ User Settings
+###  User Settings
 
 * Profile Management
 * Security Settings
@@ -66,7 +66,7 @@ Designed with a futuristic glassmorphism interface, responsive layouts, animated
 * Privacy Controls
 * Account Management
 
-### 🎙 Voice Assistant
+###  Voice Assistant
 
 * AI Listening Mode
 * Animated Voice Overlay
@@ -75,7 +75,7 @@ Designed with a futuristic glassmorphism interface, responsive layouts, animated
 
 ---
 
-# 📸 Screenshots
+#  Screenshots
 
 ## Loader Screen
 
@@ -86,6 +86,11 @@ Designed with a futuristic glassmorphism interface, responsive layouts, animated
 ## AI Chat Interface
 
 ![Chat](assets/screenshots/Chat.png)
+
+---
+
+### Recorder 
+![Recorder](assets/screenshots/Record.png)
 
 ---
 
