@@ -96,11 +96,11 @@ naseriai/
 
 ##  How to Run
 
-Use **VS Code Live Server**.
+Use VS Code Live Server
 
 1. Open the project folder in VS Code.
 2. Right-click `index.html`.
-3. Click **Open with Live Server**.
+3. Click **Open with Live Server
 
 ---
 
