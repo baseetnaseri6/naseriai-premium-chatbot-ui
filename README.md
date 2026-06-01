@@ -2,7 +2,7 @@
 
 ### Premium AI-Powered Workspace & Chat Platform
 
-Modern AI Workspace built with cutting-edge UI/UX, intelligent chatbot interactions, analytics dashboards, content tools, subscription management, and futuristic glassmorphism design.
+Modern AI Workspace built with cutting-edge UI/UX, intelligent chatbot interactions, analytics dashboards, content tools, subscription management and futuristic glassmorphism design.
 
 ---
 
