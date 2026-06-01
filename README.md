@@ -124,7 +124,7 @@ Designed with a futuristic glassmorphism interface, responsive layouts, animated
 
 ---
 
-# 🏗 Project Structure
+#  Project Structure
 
 ```text
 NASERIAI
@@ -173,7 +173,7 @@ NASERIAI
 
 ---
 
-# 🚀 Getting Started
+#  Getting Started
 
 ## Clone Repository
 
@@ -209,7 +209,7 @@ http://localhost:8000
 
 ---
 
-# 🎨 Technologies Used
+#  Technologies Used
 
 * HTML5
 * CSS3
@@ -224,7 +224,7 @@ http://localhost:8000
 
 ---
 
-# 📱 Responsive Design
+#  Responsive Design
 
 Fully optimized for:
 
@@ -235,7 +235,7 @@ Fully optimized for:
 
 ---
 
-# 🔥 Future Roadmap
+#  Future Roadmap
 
 * AI File Analysis
 * AI Resume Analyzer
@@ -250,7 +250,7 @@ Fully optimized for:
 
 ---
 
-# 💡 Skills Demonstrated
+#  Skills Demonstrated
 
 * Frontend Development
 * Responsive Web Design
