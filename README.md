@@ -1,6 +1,6 @@
-# naseriai — Premium AI Chatbot Dashboard UI
+# NASERIAI — Premium AI Chatbot Dashboard UI
 
-A professional, futuristic, and responsive AI chatbot interface built with **HTML, CSS, and JavaScript**.  
+A professional, futuristic, and responsive AI chatbot interface built with **HTML, CSS and JavaScript**.  
 The project includes a premium chat workspace, dashboard, analytics page, content tools, subscription plans, settings page, voice overlay, modern sidebar navigation, smooth UI animations and reusable frontend structure.
 
 ---
