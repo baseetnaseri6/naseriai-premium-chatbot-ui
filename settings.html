@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NASERI AI - Settings</title>
+
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/settings.css" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/global-chat-history.css" />
+</head>
+
+<body>
+  <div class="settings-app">
+    <div class="settings-grid-bg"></div>
+    <div class="settings-blob left"></div>
+    <div class="settings-blob right"></div>
+
+    <aside class="sidebar">
+      <div class="logo" onclick="safeHome()" title="Home">
+        <strong>N</strong>
+        <span>AI</span>
+      </div>
+
+      <nav class="nav">
+        <button data-label="Dashboard" onclick="goPage('dashboard.html')"><i class="fa-solid fa-table-cells-large"></i><small>Dashboard</small></button>
+        <button data-label="Chat" onclick="openGlobalChatHistory(event)"><i class="fa-solid fa-comments"></i><small>Chat</small></button>
+        <button data-label="Content Tools" onclick="goPage('content-tools.html')"><i class="fa-solid fa-wand-magic-sparkles"></i><small>Content Tools</small></button>
+        <button data-label="Analytics" onclick="goPage('analytics.html')"><i class="fa-solid fa-chart-line"></i><small>Analytics</small></button>
+        <button data-label="Subscription" onclick="goPage('subscription.html')"><i class="fa-solid fa-credit-card"></i><small>Subscription</small></button>
+        <button class="active" data-label="Settings" onclick="goPage('settings.html')"><i class="fa-solid fa-sliders"></i><small>Settings</small></button>
+      </nav>
+
+      <button class="premium">
+        <i class="fa-regular fa-gem"></i>
+        <small>Premium</small>
+      </button>
+    </aside>
+
+    <header class="settings-topbar">
+      <button class="settings-menu" id="mobileMenuBtn">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+
+      <div class="settings-search">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <input type="text" placeholder="Search..." />
+      </div>
+
+      <div class="settings-top-actions">
+        <button class="icon-btn"><i class="fa-regular fa-bell"></i><span></span></button>
+        <button class="avatar">B</button>
+      </div>
+    </header>
+
+    <aside class="settings-mobile-drawer" id="mobileDrawer">
+      <div class="drawer-header">
+        <div class="mobile-logo">
+          <strong>N</strong>
+          <span>AI</span>
+        </div>
+
+        <button id="closeMobileDrawer">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <div class="drawer-search">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <input type="text" placeholder="Search settings..." />
+      </div>
+
+      <nav class="drawer-nav">
+        <button onclick="goPage('dashboard.html')"><i class="fa-solid fa-table-cells-large"></i> Dashboard</button>
+        <button onclick="openGlobalChatHistory(event)"><i class="fa-solid fa-comments"></i> Chat</button>
+        <button onclick="goPage('content-tools.html')"><i class="fa-solid fa-wand-magic-sparkles"></i> Content Tools</button>
+        <button onclick="goPage('analytics.html')"><i class="fa-solid fa-chart-line"></i> Analytics</button>
+        <button onclick="goPage('subscription.html')"><i class="fa-solid fa-credit-card"></i> Subscription</button>
+        <button class="active"><i class="fa-solid fa-sliders"></i> Settings</button>
+      </nav>
+    </aside>
+
+    <div class="drawer-overlay" id="drawerOverlay"></div>
+
+    <main class="settings-main">
+      <section class="settings-title-row">
+        <div>
+          <h1>Settings</h1>
+          <p>Manage your account settings and preferences</p>
+        </div>
+
+        <button class="save-all">
+          <i class="fa-regular fa-floppy-disk"></i>
+          Save All Changes
+        </button>
+      </section>
+
+      <section class="settings-layout">
+        <div class="settings-left">
+          <article class="settings-card profile-card">
+            <div class="settings-card-head">
+              <span class="settings-icon purple"><i class="fa-regular fa-user"></i></span>
+              <div>
+                <h2>Profile Information</h2>
+                <p>Update your personal details</p>
+              </div>
+            </div>
+
+            <div class="avatar-upload">
+              <div class="big-avatar">JD</div>
+              <div>
+                <button class="upload-btn"><i class="fa-solid fa-upload"></i> Upload Photo</button>
+                <p>JPG, PNG or GIF. Max 10MB</p>
+              </div>
+            </div>
+
+            <div class="profile-grid">
+              <label>
+                Full Name
+                <input class="profile-field" type="text" value="John Doe">
+              </label>
+
+              <label>
+                Email Address
+                <input class="profile-field" type="email" value="john.doe@example.com">
+              </label>
+
+              <label>
+                Phone Number
+                <input class="profile-field" type="text" placeholder="+1 (555) 000-0000">
+              </label>
+
+              <label>
+                Company
+                <input class="profile-field" type="text" placeholder="Your company name...">
+              </label>
+            </div>
+
+            <button class="save-profile"><i class="fa-regular fa-floppy-disk"></i> Save Profile</button>
+          </article>
+
+          <article class="settings-card">
+            <div class="settings-card-head">
+              <span class="settings-icon blue"><i class="fa-solid fa-globe"></i></span>
+              <div>
+                <h2>Language & Region</h2>
+                <p>Set your language and timezone preferences</p>
+              </div>
+            </div>
+
+            <div class="select-grid">
+              <label>
+                Language
+                <select>
+                  <option>English</option>
+                  <option>German</option>
+                  <option>Dari / Farsi</option>
+                </select>
+              </label>
+
+              <label>
+                Timezone
+                <select>
+                  <option>UTC (GMT+0)</option>
+                  <option>Europe/Berlin</option>
+                  <option>Asia/Kabul</option>
+                </select>
+              </label>
+            </div>
+          </article>
+
+          <article class="settings-card">
+            <div class="settings-card-head">
+              <span class="settings-icon purple"><i class="fa-regular fa-bell"></i></span>
+              <div>
+                <h2>Notification Preferences</h2>
+                <p>Choose what notifications you want to receive</p>
+              </div>
+            </div>
+
+            <div class="setting-list">
+              <div class="setting-row">
+                <i class="fa-regular fa-envelope"></i>
+                <div><strong>Email Notifications</strong><p>Receive notifications via email</p></div>
+                <label class="switch"><input type="checkbox" checked><span></span></label>
+              </div>
+
+              <div class="setting-row">
+                <i class="fa-solid fa-mobile-screen"></i>
+                <div><strong>Push Notifications</strong><p>Get push notifications on your device</p></div>
+                <label class="switch"><input type="checkbox" checked><span></span></label>
+              </div>
+
+              <div class="setting-row">
+                <i class="fa-solid fa-bolt"></i>
+                <div><strong>Product Updates</strong><p>News about new features and updates</p></div>
+                <label class="switch"><input type="checkbox"><span></span></label>
+              </div>
+
+              <div class="setting-row">
+                <i class="fa-solid fa-shield-halved"></i>
+                <div><strong>Security Alerts</strong><p>Important security notifications</p></div>
+                <label class="switch"><input type="checkbox" checked><span></span></label>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <aside class="settings-right">
+          <article class="settings-side-card account-status">
+            <div class="settings-card-head">
+              <span class="settings-icon green"><i class="fa-regular fa-circle-check"></i></span>
+              <div>
+                <h2>Account Status</h2>
+                <p>Active & Verified</p>
+              </div>
+            </div>
+
+            <div class="status-list">
+              <span>Member since:</span><strong>Jan 2024</strong>
+              <span>Plan:</span><strong class="success">Professional</strong>
+              <span>Storage used:</span><strong>2.4 GB / 10 GB</strong>
+            </div>
+          </article>
+
+          <article class="settings-side-card">
+            <div class="settings-card-head">
+              <span class="settings-icon blue"><i class="fa-regular fa-credit-card"></i></span>
+              <div>
+                <h2>Billing</h2>
+                <p>Manage payment methods</p>
+              </div>
+            </div>
+
+            <div class="billing-method">
+              <i class="fa-regular fa-credit-card"></i>
+              <strong>•••• 4242</strong>
+              <span>Expires 12/25</span>
+              <p>Primary payment method</p>
+            </div>
+
+            <button class="outline-wide">Manage Billing</button>
+          </article>
+
+          <article class="settings-side-card">
+            <div class="settings-card-head">
+              <span class="settings-icon green"><i class="fa-solid fa-shield-halved"></i></span>
+              <div>
+                <h2>Security & Privacy</h2>
+                <p>Manage your security settings</p>
+              </div>
+            </div>
+
+            <div class="privacy-list">
+              <div class="setting-row compact">
+                <i class="fa-solid fa-key"></i>
+                <div><strong>Two-Factor Authentication</strong><p>Add an extra layer of security</p></div>
+                <label class="switch small"><input type="checkbox"><span></span></label>
+              </div>
+
+              <div class="setting-row compact">
+                <i class="fa-solid fa-database"></i>
+                <div><strong>Data Sharing</strong><p>Share anonymous usage data</p></div>
+                <label class="switch small"><input type="checkbox"><span></span></label>
+              </div>
+
+              <button class="outline-action"><i class="fa-solid fa-key"></i> Change Password</button>
+              <button class="outline-action"><i class="fa-regular fa-eye"></i> View Active Sessions</button>
+              <button class="outline-action"><i class="fa-solid fa-download"></i> Download My Data</button>
+            </div>
+          </article>
+
+          <article class="danger-zone">
+            <h2>Danger Zone</h2>
+            <button><i class="fa-regular fa-trash-can"></i> Delete Account</button>
+            <p>Once deleted, your account cannot be recovered</p>
+          </article>
+        </aside>
+      </section>
+
+      <footer class="site-footer">
+        <span>© 2026 naseriai. All Rights Reserved.</span>
+        <span>Designed &amp; Developed by <strong>Mohammad Baseet Naseri</strong></span>
+      </footer>
+
+    </main>
+  </div>
+
+  <script src="js/settings.js"></script>
+  
+  <script src="js/safe-navigation.js"></script>
+  <script src="js/professional-sidebar.js"></script>
+  <script src="js/global-chat-history.js"></script>
+  <script src="js/chat-navigation-guard.js"></script>
+  <script src="js/spa-router.js"></script>
+</body>
+</html>

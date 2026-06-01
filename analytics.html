@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NASERI AI - Analytics Dashboard</title>
+
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/analytics.css" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/global-chat-history.css" />
+</head>
+
+<body>
+  <div class="analytics-app">
+    <div class="analytics-grid-bg"></div>
+    <div class="analytics-blob left"></div>
+    <div class="analytics-blob right"></div>
+
+    <aside class="sidebar">
+      <div class="logo" onclick="safeHome()" title="Home">
+        <strong>N</strong>
+        <span>AI</span>
+      </div>
+
+      <nav class="nav">
+        <button data-label="Dashboard" onclick="goPage('dashboard.html')"><i class="fa-solid fa-table-cells-large"></i><small>Dashboard</small></button>
+        <button data-label="Chat" onclick="openGlobalChatHistory(event)"><i class="fa-solid fa-comments"></i><small>Chat</small></button>
+        <button data-label="Content Tools" onclick="goPage('content-tools.html')"><i class="fa-solid fa-wand-magic-sparkles"></i><small>Content Tools</small></button>
+        <button class="active" data-label="Analytics" onclick="goPage('analytics.html')"><i class="fa-solid fa-chart-line"></i><small>Analytics</small></button>
+        <button data-label="Subscription" onclick="goPage('subscription.html')"><i class="fa-solid fa-credit-card"></i><small>Subscription</small></button>
+        <button data-label="Settings" onclick="goPage('settings.html')"><i class="fa-solid fa-sliders"></i><small>Settings</small></button>
+      </nav>
+
+      <button class="premium">
+        <i class="fa-regular fa-gem"></i>
+        <small>Premium</small>
+      </button>
+    </aside>
+
+    <header class="analytics-topbar">
+      <button class="analytics-menu" id="mobileMenuBtn">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+
+      <div class="analytics-search">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <input type="text" placeholder="Search..." />
+      </div>
+
+      <div class="analytics-top-actions">
+        <button class="icon-btn"><i class="fa-regular fa-bell"></i><span></span></button>
+        <button class="avatar">B</button>
+      </div>
+    </header>
+
+    <aside class="analytics-mobile-drawer" id="mobileDrawer">
+      <div class="drawer-header">
+        <div class="mobile-logo">
+          <strong>N</strong>
+          <span>AI</span>
+        </div>
+
+        <button id="closeMobileDrawer">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <div class="drawer-search">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <input type="text" placeholder="Search analytics..." />
+      </div>
+
+      <nav class="drawer-nav">
+        <button onclick="goPage('dashboard.html')"><i class="fa-solid fa-table-cells-large"></i> Dashboard</button>
+        <button onclick="openGlobalChatHistory(event)"><i class="fa-solid fa-comments"></i> Chat</button>
+        <button onclick="goPage('content-tools.html')"><i class="fa-solid fa-wand-magic-sparkles"></i> Content Tools</button>
+        <button class="active" onclick="goPage('analytics.html')"><i class="fa-solid fa-chart-line"></i> Analytics</button>
+        <button onclick="goPage('subscription.html')"><i class="fa-solid fa-credit-card"></i> Subscription</button>
+        <button onclick="goPage('settings.html')"><i class="fa-solid fa-sliders"></i> Settings</button>
+      </nav>
+    </aside>
+
+    <div class="drawer-overlay" id="drawerOverlay"></div>
+
+    <main class="analytics-main">
+      <section class="analytics-title-row">
+        <div>
+          <h1>Analytics Dashboard</h1>
+          <p>Real-time business intelligence and performance metrics</p>
+        </div>
+
+        <div class="analytics-actions">
+          <button class="outline-btn">
+            <i class="fa-regular fa-calendar"></i>
+            Last 7 days
+          </button>
+
+          <button class="primary-btn" id="exportData">
+            <i class="fa-solid fa-download"></i>
+            Export Data
+          </button>
+        </div>
+      </section>
+
+      <section class="analytics-metrics">
+        <article class="analytics-card">
+          <div>
+            <span>MONTHLY REVENUE</span>
+            <strong>$98,000</strong>
+            <p>$56K profit margin</p>
+          </div>
+          <div class="analytics-icon green"><i class="fa-solid fa-dollar-sign"></i></div>
+          <small class="positive"><i class="fa-solid fa-arrow-trend-up"></i> +15.3%</small>
+        </article>
+
+        <article class="analytics-card purple">
+          <div>
+            <span>API REQUESTS</span>
+            <strong>2.4M</strong>
+            <p>110K requests/day</p>
+          </div>
+          <div class="analytics-icon blue"><i class="fa-solid fa-wave-square"></i></div>
+          <small class="positive"><i class="fa-solid fa-arrow-trend-up"></i> +28.7%</small>
+        </article>
+
+        <article class="analytics-card">
+          <div>
+            <span>ACTIVE SUBSCRIPTIONS</span>
+            <strong>4,820</strong>
+            <p>565 new this month</p>
+          </div>
+          <div class="analytics-icon purple-icon"><i class="fa-regular fa-credit-card"></i></div>
+          <small class="positive"><i class="fa-solid fa-arrow-trend-up"></i> +12.4%</small>
+        </article>
+
+        <article class="analytics-card">
+          <div>
+            <span>SYSTEM UPTIME</span>
+            <strong>99.97%</strong>
+            <p>2.5 hours downtime</p>
+          </div>
+          <div class="analytics-icon cyan"><i class="fa-solid fa-server"></i></div>
+          <small class="positive"><i class="fa-solid fa-arrow-trend-up"></i> +0.02%</small>
+        </article>
+      </section>
+
+      <section class="analytics-panel revenue-panel">
+        <div class="analytics-panel-head">
+          <div>
+            <h2>Revenue & Profit Analysis</h2>
+            <p>Monthly financial performance overview</p>
+          </div>
+
+          <div class="legend">
+            <span><i class="rev"></i> Revenue</span>
+            <span><i class="exp"></i> Expenses</span>
+            <span><i class="prof"></i> Profit</span>
+          </div>
+        </div>
+
+        <div class="interactive-chart" id="revenueChart">
+          <div class="tooltip" id="chartTooltip">Jan — Revenue $44K</div>
+          <div class="axis-y">
+            <span>100000</span>
+            <span>75000</span>
+            <span>50000</span>
+            <span>25000</span>
+          </div>
+
+          <svg viewBox="0 0 1000 360" preserveAspectRatio="none">
+            <path class="area revenue-area" d="M0,260 C150,230 230,190 330,180 C440,175 480,205 560,190 C670,160 760,105 850,80 C920,60 980,30 1000,22 L1000,360 L0,360 Z"></path>
+            <path class="area expenses-area" d="M0,310 C170,295 310,280 460,285 C570,285 645,260 720,255 C830,245 930,225 1000,215 L1000,360 L0,360 Z"></path>
+            <path class="area profit-area" d="M0,335 C160,320 300,300 420,300 C540,310 620,280 700,248 C800,220 900,190 1000,165 L1000,360 L0,360 Z"></path>
+
+            <path class="line revenue-line" d="M0,260 C150,230 230,190 330,180 C440,175 480,205 560,190 C670,160 760,105 850,80 C920,60 980,30 1000,22"></path>
+            <path class="line expenses-line" d="M0,310 C170,295 310,280 460,285 C570,285 645,260 720,255 C830,245 930,225 1000,215"></path>
+            <path class="line profit-line" d="M0,335 C160,320 300,300 420,300 C540,310 620,280 700,248 C800,220 900,190 1000,165"></path>
+
+            <g class="chart-points">
+              <circle data-month="Jan" data-revenue="$44K" cx="0" cy="260" r="7"></circle>
+              <circle data-month="Feb" data-revenue="$52K" cx="170" cy="230" r="7"></circle>
+              <circle data-month="Mar" data-revenue="$61K" cx="330" cy="180" r="7"></circle>
+              <circle data-month="Apr" data-revenue="$58K" cx="560" cy="190" r="7"></circle>
+              <circle data-month="May" data-revenue="$72K" cx="720" cy="135" r="7"></circle>
+              <circle data-month="Jun" data-revenue="$86K" cx="850" cy="80" r="7"></circle>
+              <circle data-month="Jul" data-revenue="$101K" cx="1000" cy="22" r="7"></circle>
+            </g>
+          </svg>
+        </div>
+      </section>
+
+      <section class="analytics-two-grid">
+        <article class="analytics-panel">
+          <div class="analytics-panel-head">
+            <div>
+              <h2>API Request Analytics</h2>
+              <p>Weekly API usage and error tracking</p>
+            </div>
+          </div>
+
+          <div class="bar-widget">
+            <div class="bar" style="height:58%"><span>Mon</span></div>
+            <div class="bar" style="height:73%"><span>Tue</span></div>
+            <div class="bar" style="height:84%"><span>Wed</span></div>
+            <div class="bar" style="height:78%"><span>Thu</span></div>
+            <div class="bar" style="height:96%"><span>Fri</span></div>
+            <div class="bar" style="height:66%"><span>Sat</span></div>
+            <div class="bar" style="height:54%"><span>Sun</span></div>
+          </div>
+        </article>
+
+        <article class="analytics-panel">
+          <div class="analytics-panel-head">
+            <div>
+              <h2>System Resource Usage</h2>
+              <p>Real-time infrastructure monitoring</p>
+            </div>
+          </div>
+
+          <div class="resource-chart">
+            <svg viewBox="0 0 600 300" preserveAspectRatio="none">
+              <path class="resource-purple" d="M0,190 C80,230 130,260 180,200 C250,120 290,95 360,72 C430,48 505,35 600,80"></path>
+              <path class="resource-green" d="M0,130 C80,150 150,145 210,98 C275,80 330,75 400,62 C480,45 530,48 600,88"></path>
+              <circle cx="0" cy="190" r="6"></circle>
+              <circle cx="220" cy="115" r="6"></circle>
+              <circle cx="360" cy="72" r="6"></circle>
+              <circle cx="600" cy="80" r="6"></circle>
+            </svg>
+          </div>
+        </article>
+      </section>
+
+      <section class="analytics-two-grid bottom">
+        <article class="analytics-panel">
+          <div class="analytics-panel-head">
+            <div>
+              <h2>Subscription Growth Metrics</h2>
+              <p>New subscriptions vs churn rate analysis</p>
+            </div>
+          </div>
+
+          <div class="growth-box">
+            <div class="growth-bar small"></div>
+            <div class="growth-bar medium"></div>
+            <div class="growth-bar large"></div>
+          </div>
+        </article>
+
+        <article class="analytics-panel features">
+          <div class="analytics-panel-head">
+            <div>
+              <h2>Top Features</h2>
+              <p>Most used platform features</p>
+            </div>
+          </div>
+
+          <div class="feature-list">
+            <div class="feature-row">
+              <div><strong>Text Generation</strong><span>8,500</span><em>↗ 24%</em></div>
+              <i><b style="width:92%"></b></i>
+            </div>
+            <div class="feature-row">
+              <div><strong>Image Creation</strong><span>6,200</span><em>↗ 18%</em></div>
+              <i><b style="width:72%"></b></i>
+            </div>
+            <div class="feature-row">
+              <div><strong>Code Assistant</strong><span>4,900</span><em>↗ 12%</em></div>
+              <i><b style="width:58%"></b></i>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <footer class="site-footer">
+        <span>© 2026 naseriai. All Rights Reserved.</span>
+        <span>Designed &amp; Developed by <strong>Mohammad Baseet Naseri</strong></span>
+      </footer>
+
+    </main>
+  </div>
+
+  <script src="js/analytics.js"></script>
+  
+  <script src="js/safe-navigation.js"></script>
+  <script src="js/professional-sidebar.js"></script>
+  <script src="js/global-chat-history.js"></script>
+  <script src="js/chat-navigation-guard.js"></script>
+  <script src="js/spa-router.js"></script>
+</body>
+</html>

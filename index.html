@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NASERI AI Chatbot - V6</title>
+
+  <link rel="stylesheet" href="css/style.css" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/global-chat-history.css" />
+</head>
+
+<body>
+
+  <!-- PAGE LOADER -->
+  <div class="page-loader" id="pageLoader">
+    <div class="loader-orb">
+      <div class="loader-ring ring-1"></div>
+      <div class="loader-ring ring-2"></div>
+      <div class="loader-core"></div>
+    </div>
+
+    <div class="loader-text">
+      <span>NASERI AI</span>
+      <p>Preparing your intelligent workspace...</p>
+    </div>
+
+    <div class="loader-line">
+      <span></span>
+    </div>
+  </div>
+
+  <div class="app" id="app">
+    <div class="grid"></div>
+    <div class="blob blob-left"></div>
+    <div class="blob blob-right"></div>
+    <div class="blob blob-center"></div>
+
+    <!-- CHAT HISTORY SLIDER -->
+    <aside class="history-panel" id="historyPanel">
+      <div class="history-header">
+        <div>
+          <h3>Chat History</h3>
+          <p>Your recent conversations</p>
+        </div>
+
+        <button id="closeHistory">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <div class="history-actions">
+        <button id="historyNewChat">
+          <i class="fa-solid fa-plus"></i>
+          New Chat
+        </button>
+
+        <button id="clearHistory">
+          <i class="fa-regular fa-trash-can"></i>
+        </button>
+      </div>
+
+      <div class="history-list" id="historyList">
+      </div>
+    </aside>
+
+    <div class="history-overlay" id="historyOverlay"></div>
+
+    <!-- DOWNLOAD FILES PANEL -->
+<aside class="downloads-panel" id="downloadsPanel">
+      <div class="downloads-header">
+        <div>
+          <h3>Download Files</h3>
+          <p>AI generated files</p>
+        </div>
+
+        <button id="closeDownloads">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <div class="downloads-list" id="downloadsList">
+        <div class="downloads-empty">No files yet. Send a message to generate a downloadable file.</div>
+      </div>
+    </aside>
+
+
+    <!-- MOBILE SIDEBAR DRAWER -->
+    <aside class="mobile-drawer" id="mobileDrawer">
+      <div class="mobile-drawer-header">
+        <div class="mobile-logo">
+          <strong>N</strong>
+          <span>AI</span>
+        </div>
+
+        <button id="closeMobileDrawer">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <div class="mobile-search">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <input type="text" placeholder="Search conversations..." />
+      </div>
+
+      <button class="mobile-new-chat" id="mobileNewChat">
+        <i class="fa-solid fa-plus"></i>
+        New Chat
+      </button>
+
+      <nav class="mobile-nav">
+        <button onclick="goPage('dashboard.html')"><i class="fa-solid fa-table-cells-large"></i> Dashboard</button>
+        <button class="active" id="mobileChatNav" onclick="openGlobalChatHistory(event)"><i class="fa-solid fa-comments"></i> Chat</button>
+        <button onclick="goPage('content-tools.html')"><i class="fa-solid fa-wand-magic-sparkles"></i> Content Tools</button>
+        <button onclick="goPage('analytics.html')"><i class="fa-solid fa-chart-line"></i> Analytics</button>
+        <button onclick="goPage('subscription.html')"><i class="fa-solid fa-credit-card"></i> Subscription</button>
+        <button onclick="goPage('settings.html')"><i class="fa-solid fa-sliders"></i> Settings</button>
+      </nav>
+    </aside>
+
+    <div class="mobile-drawer-overlay" id="mobileDrawerOverlay"></div>
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <div class="logo" onclick="safeHome()" title="Home">
+        <strong>N</strong>
+        <span>AI</span>
+      </div>
+
+      <nav class="nav">
+        <button data-label="Dashboard" onclick="goPage('dashboard.html')"><i class="fa-solid fa-table-cells-large"></i><small>Dashboard</small></button>
+        <button class="active" data-label="Chat" onclick="openGlobalChatHistory(event)"><i class="fa-solid fa-comments"></i><small>Chat</small></button>
+        <button data-label="Content Tools" onclick="goPage('content-tools.html')"><i class="fa-solid fa-wand-magic-sparkles"></i><small>Content Tools</small></button>
+        <button data-label="Analytics" onclick="goPage('analytics.html')"><i class="fa-solid fa-chart-line"></i><small>Analytics</small></button>
+        <button data-label="Subscription" onclick="goPage('subscription.html')"><i class="fa-solid fa-credit-card"></i><small>Subscription</small></button>
+        <button data-label="Settings" onclick="goPage('settings.html')"><i class="fa-solid fa-sliders"></i><small>Settings</small></button>
+      </nav>
+
+      <button class="premium">
+        <i class="fa-regular fa-gem"></i>
+        <small>Premium</small>
+      </button>
+    </aside>
+
+    <!-- TOP BAR -->
+    <header class="topbar">
+      <button class="mobile-menu-btn" id="mobileMenuBtn">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+
+      <div class="search desktop-search">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <input type="text" placeholder="Search conversations, files, prompts..." />
+        <kbd>⌘ K</kbd>
+      </div>
+
+      <div class="topbar-center-actions">
+        <button class="new-chat-btn" id="newChatBtn">
+          <i class="fa-solid fa-plus"></i>
+          New Chat
+        </button>
+      </div>
+
+      <div class="top-actions">
+        <button class="top-downloads" id="downloadsToggle" title="Download files">
+          <i class="fa-solid fa-arrow-down"></i>
+          <span id="downloadCount">0</span>
+        </button>
+
+        <button class="notification"><i class="fa-regular fa-bell"></i><span></span></button>
+        <button class="avatar" id="profileBtn">B</button>
+      </div>
+    </header>
+
+    <!-- PROFILE DROPDOWN -->
+    <div class="profile-menu" id="profileMenu">
+      <div class="profile-user">
+        <strong>John Doe</strong>
+        <span>john@example.com</span>
+      </div>
+
+      <div class="profile-links">
+        <button>
+          <i class="fa-regular fa-user"></i>
+          Profile
+        </button>
+
+        <button>
+          <i class="fa-solid fa-gear"></i>
+          Settings
+        </button>
+
+        <button>
+          <i class="fa-regular fa-circle-question"></i>
+          Help & Support
+        </button>
+      </div>
+
+      <div class="profile-logout">
+        <button>
+          <i class="fa-solid fa-arrow-right-from-bracket"></i>
+          Log out
+        </button>
+      </div>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <main class="main">
+      <section class="hero" id="heroSection">
+        <div>
+          <div class="badge"><i class="fa-solid fa-crown"></i> Premium AI Workspace</div>
+          <h1>AI Chatbot</h1>
+          <p>Ask anything, analyze data, generate code and create premium reports from one futuristic assistant.</p>
+        </div>
+
+        <div class="actions-wrap">
+          <div class="actions">
+            <button id="fullscreenBtn"><i class="fa-solid fa-expand"></i> Fullscreen</button>
+            <button id="optionsBtn"><i class="fa-solid fa-sliders"></i> Options</button>
+          </div>
+
+          <div class="options-menu" id="optionsMenu">
+            <button id="exportChat">
+              <i class="fa-solid fa-download"></i>
+              Export Chat
+            </button>
+
+            <button id="shareChat">
+              <i class="fa-solid fa-share-nodes"></i>
+              Share Chat
+            </button>
+
+            <div class="menu-divider"></div>
+
+            <button class="danger" id="clearCurrentChat">
+              <i class="fa-regular fa-trash-can"></i>
+              Clear Chat
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ORB + AI LISTENING -->
+      <section class="orb-stage" id="orbStage">
+        <div class="orb-system">
+          <div class="stars"></div>
+
+          <div class="orbit orbit-1"></div>
+          <div class="orbit orbit-2"></div>
+          <div class="orbit orbit-3"></div>
+          <div class="orbit orbit-4"></div>
+
+          <span class="sat sat-1"></span>
+          <span class="sat sat-2"></span>
+          <span class="sat sat-3"></span>
+          <span class="sat sat-4"></span>
+
+          <div class="orb-light"></div>
+
+          <div class="orb">
+            <div class="orb-shine"></div>
+            <div class="orb-ring-line"></div>
+          </div>
+
+          <div class="floor-ring ring-a"></div>
+          <div class="floor-ring ring-b"></div>
+        </div>
+
+        <div class="listening-status">
+          <div class="equalizer">
+            <span></span><span></span><span></span><span></span><span></span>
+          </div>
+
+          <strong>AI is listening</strong>
+
+          <div class="equalizer">
+            <span></span><span></span><span></span><span></span><span></span>
+          </div>
+        </div>
+      </section>
+
+      <!-- CHAT MESSAGES VIEW -->
+      <section class="chat-view" id="chatView">
+        <div class="assistant-row">
+          <div class="assistant-icon">
+            <i class="fa-solid fa-robot"></i>
+          </div>
+
+          <div class="assistant-message">
+            <p>I understand you're asking about <strong id="assistantTopic">"hello"</strong>. I can help with:</p>
+            <ul>
+              <li>Data analysis and insights</li>
+              <li>Writing SQL queries</li>
+              <li>Debugging code issues</li>
+              <li>Creating visualizations</li>
+              <li>Optimizing performance</li>
+              <li>Generating reports</li>
+            </ul>
+            <p>Could you provide more details about what you need?</p>
+          </div>
+        </div>
+
+        <div class="user-message" id="userMessage">hello</div>
+      </section>
+
+      <!-- CHAT COMPOSER -->
+      <section class="composer-zone">
+        <div class="composer">
+          <input id="promptInput" type="text" placeholder="Ask anything..." />
+
+          <div class="tools">
+            <button><i class="fa-solid fa-plus"></i></button>
+            <button><i class="fa-solid fa-globe"></i></button>
+            <button><i class="fa-solid fa-paperclip"></i></button>
+            <button><i class="fa-solid fa-wand-magic-sparkles"></i></button>
+            <button><i class="fa-solid fa-code"></i></button>
+          </div>
+
+          <button class="mic" id="openVoice"><i class="fa-solid fa-microphone"></i></button>
+          <button class="send" id="sendMessage"><i class="fa-solid fa-arrow-up"></i></button>
+        </div>
+
+        <p class="helper-text">New Chat starts fresh • Chat icon opens history • Hover messages to edit/copy</p>
+      </section>
+</main>
+  </div>
+
+  <!-- FULLSCREEN VOICE RECORDING PAGE -->
+  <section class="voice-screen" id="voiceScreen">
+    <div class="voice-blur-bg"></div>
+
+    <button class="voice-exit" id="voiceExit">
+      <i class="fa-solid fa-xmark"></i>
+    </button>
+
+    <div class="voice-content">
+
+      <div class="voice-orb-wrap">
+        <div class="voice-outer-ring"></div>
+        <div class="voice-outer-ring ring-large"></div>
+
+        <div class="voice-main-circle">
+          <div class="voice-radial-lines">
+            <span style="--i:0"></span><span style="--i:1"></span><span style="--i:2"></span><span style="--i:3"></span><span style="--i:4"></span>
+            <span style="--i:5"></span><span style="--i:6"></span><span style="--i:7"></span><span style="--i:8"></span><span style="--i:9"></span>
+            <span style="--i:10"></span><span style="--i:11"></span><span style="--i:12"></span><span style="--i:13"></span><span style="--i:14"></span>
+            <span style="--i:15"></span><span style="--i:16"></span><span style="--i:17"></span><span style="--i:18"></span><span style="--i:19"></span>
+            <span style="--i:20"></span><span style="--i:21"></span><span style="--i:22"></span><span style="--i:23"></span><span style="--i:24"></span>
+            <span style="--i:25"></span><span style="--i:26"></span><span style="--i:27"></span><span style="--i:28"></span><span style="--i:29"></span>
+            <span style="--i:30"></span><span style="--i:31"></span><span style="--i:32"></span><span style="--i:33"></span><span style="--i:34"></span>
+            <span style="--i:35"></span><span style="--i:36"></span><span style="--i:37"></span><span style="--i:38"></span><span style="--i:39"></span>
+            <span style="--i:40"></span><span style="--i:41"></span><span style="--i:42"></span><span style="--i:43"></span><span style="--i:44"></span>
+            <span style="--i:45"></span><span style="--i:46"></span><span style="--i:47"></span><span style="--i:48"></span><span style="--i:49"></span>
+            <span style="--i:50"></span><span style="--i:51"></span><span style="--i:52"></span><span style="--i:53"></span><span style="--i:54"></span>
+            <span style="--i:55"></span><span style="--i:56"></span><span style="--i:57"></span><span style="--i:58"></span><span style="--i:59"></span>
+          </div>
+
+          <div class="voice-core-glass"></div>
+          <i class="fa-solid fa-microphone-lines"></i>
+        </div>
+
+        <div class="voice-bottom-glow"></div>
+      </div>
+
+      <div class="voice-timer-area">
+        <div class="voice-time">
+          <span class="record-dot"></span>
+          <strong id="recordTimer">00:00</strong>
+        </div>
+        <p id="recordingText">Recording in progress...</p>
+      </div>
+
+      <div class="record-actions">
+        <button class="delete-record" id="deleteRecord">
+          <i class="fa-regular fa-trash-can"></i>
+          Delete
+        </button>
+
+        <button class="stop-record" id="stopRecord">
+          <i class="fa-regular fa-circle-stop"></i>
+          Stop
+        </button>
+
+        <button class="send-record" id="sendRecord">
+          <i class="fa-regular fa-paper-plane"></i>
+          Send
+        </button>
+      </div>
+
+    </div>
+  </section>
+
+  <script src="js/script.js"></script>
+
+  <script src="js/safe-navigation.js"></script>
+  <script src="js/professional-sidebar.js"></script>
+  <script src="js/global-chat-history.js"></script>
+  <script src="js/chat-navigation-guard.js"></script>
+  <script src="js/spa-router.js"></script>
+</body>
+</html>

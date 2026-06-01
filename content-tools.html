@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NASERI AI - Content Tools</title>
+
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/content-tools.css" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/global-chat-history.css" />
+</head>
+
+<body>
+  <div class="content-app">
+    <div class="content-grid"></div>
+    <div class="content-blob left"></div>
+    <div class="content-blob right"></div>
+
+    <aside class="sidebar">
+      <div class="logo" onclick="safeHome()" title="Home">
+        <strong>N</strong>
+        <span>AI</span>
+      </div>
+
+      <nav class="nav">
+        <button data-label="Dashboard" onclick="goPage('dashboard.html')"><i class="fa-solid fa-table-cells-large"></i><small>Dashboard</small></button>
+        <button data-label="Chat" onclick="openGlobalChatHistory(event)"><i class="fa-solid fa-comments"></i><small>Chat</small></button>
+        <button class="active" data-label="Content Tools" onclick="goPage('content-tools.html')"><i class="fa-solid fa-wand-magic-sparkles"></i><small>Content Tools</small></button>
+        <button data-label="Analytics" onclick="goPage('analytics.html')"><i class="fa-solid fa-chart-line"></i><small>Analytics</small></button>
+        <button data-label="Subscription" onclick="goPage('subscription.html')"><i class="fa-solid fa-credit-card"></i><small>Subscription</small></button>
+        <button data-label="Settings" onclick="goPage('settings.html')"><i class="fa-solid fa-sliders"></i><small>Settings</small></button>
+      </nav>
+
+      <button class="premium">
+        <i class="fa-regular fa-gem"></i>
+        <small>Premium</small>
+      </button>
+    </aside>
+
+    <header class="content-topbar">
+      <button class="content-menu" id="mobileMenuBtn">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+
+      <div class="content-search">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <input id="toolSearch" type="text" placeholder="Search..." />
+      </div>
+
+      <div class="content-top-actions">
+        <button class="icon-btn"><i class="fa-regular fa-bell"></i><span></span></button>
+        <button class="avatar">B</button>
+      </div>
+    </header>
+
+    <aside class="content-mobile-drawer" id="mobileDrawer">
+      <div class="drawer-header">
+        <div class="mobile-logo">
+          <strong>N</strong>
+          <span>AI</span>
+        </div>
+
+        <button id="closeMobileDrawer">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <div class="drawer-search">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <input type="text" placeholder="Search tools..." />
+      </div>
+
+      <nav class="drawer-nav">
+        <button onclick="goPage('dashboard.html')"><i class="fa-solid fa-table-cells-large"></i> Dashboard</button>
+        <button onclick="openGlobalChatHistory(event)"><i class="fa-solid fa-comments"></i> Chat</button>
+        <button class="active" onclick="goPage('content-tools.html')"><i class="fa-solid fa-wand-magic-sparkles"></i> Content Tools</button>
+        <button onclick="goPage('analytics.html')"><i class="fa-solid fa-chart-line"></i> Analytics</button>
+        <button onclick="goPage('subscription.html')"><i class="fa-solid fa-credit-card"></i> Subscription</button>
+        <button onclick="goPage('settings.html')"><i class="fa-solid fa-sliders"></i> Settings</button>
+      </nav>
+    </aside>
+
+    <div class="drawer-overlay" id="drawerOverlay"></div>
+
+    <main class="content-main">
+      <section class="content-title-row">
+        <div>
+          <h1>Content Tools</h1>
+          <p>Complete toolkit for data management and AI assistance</p>
+        </div>
+
+        <div class="content-actions">
+          <button class="outline-btn" id="listViewBtn">
+            <i class="fa-solid fa-list"></i>
+            List View
+          </button>
+
+          <button class="primary-btn">
+            <i class="fa-solid fa-gear"></i>
+            Customize Tools
+          </button>
+        </div>
+      </section>
+
+      <section class="tools-filter-panel">
+        <div class="big-search">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input id="bigToolSearch" type="text" placeholder="Search tools..." />
+        </div>
+
+        <div class="filter-tabs">
+          <button class="active" data-filter="all">All Tools</button>
+          <button data-filter="search"><i class="fa-solid fa-magnifying-glass"></i> Search & Discovery</button>
+          <button data-filter="filters"><i class="fa-solid fa-sliders"></i> Filters & Sorting</button>
+          <button data-filter="view"><i class="fa-solid fa-table-cells-large"></i> View Controls</button>
+          <button data-filter="ai"><i class="fa-solid fa-brain"></i> AI Insights</button>
+          <button data-filter="export"><i class="fa-solid fa-download"></i> Export Tools</button>
+        </div>
+      </section>
+
+      <section class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-icon purple"><i class="fa-solid fa-gear"></i></div>
+          <div>
+            <strong>45+</strong>
+            <span>Total Tools</span>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon blue"><i class="fa-solid fa-brain"></i></div>
+          <div>
+            <strong>12</strong>
+            <span>AI-Powered</span>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon green"><i class="fa-solid fa-plug"></i></div>
+          <div>
+            <strong>8</strong>
+            <span>Integrations</span>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon amber"><i class="fa-solid fa-users"></i></div>
+          <div>
+            <strong>5</strong>
+            <span>Collaboration</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="tool-groups" id="toolGroups">
+        <article class="group-card" data-category="search">
+          <div class="group-head">
+            <div class="group-icon blue"><i class="fa-solid fa-magnifying-glass"></i></div>
+            <div>
+              <h3>Search & Discovery</h3>
+              <p>3 tools</p>
+            </div>
+            <i class="fa-solid fa-chevron-right"></i>
+          </div>
+
+          <div class="tool-list">
+            <div class="tool-row">
+              <span><i class="fa-solid fa-magnifying-glass"></i></span>
+              <div><strong>Global Search</strong><p>Search across all datasets</p></div>
+            </div>
+
+            <div class="tool-row">
+              <span><i class="fa-solid fa-brain"></i></span>
+              <div><strong>AI Semantic Search</strong><p>Natural language queries</p></div>
+            </div>
+
+            <div class="tool-row">
+              <span><i class="fa-solid fa-clock-rotate-left"></i></span>
+              <div><strong>Recent Content</strong><p>Continue previous work</p></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="group-card" data-category="filters">
+          <div class="group-head">
+            <div class="group-icon purple"><i class="fa-solid fa-sliders"></i></div>
+            <div>
+              <h3>Filters & Sorting</h3>
+              <p>4 tools</p>
+            </div>
+            <i class="fa-solid fa-chevron-right"></i>
+          </div>
+
+          <div class="tool-list">
+            <div class="tool-row">
+              <span><i class="fa-regular fa-calendar-days"></i></span>
+              <div><strong>Date Range Picker</strong><p>Select time periods</p></div>
+            </div>
+
+            <div class="tool-row">
+              <span><i class="fa-solid fa-filter"></i></span>
+              <div><strong>Advanced Filters</strong><p>Multi-criteria filtering</p></div>
+            </div>
+
+            <div class="tool-row">
+              <span><i class="fa-solid fa-arrow-down-wide-short"></i></span>
+              <div><strong>Smart Sorting</strong><p>Sort by relevance and date</p></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="group-card" data-category="view">
+          <div class="group-head">
+            <div class="group-icon green"><i class="fa-solid fa-table-cells"></i></div>
+            <div>
+              <h3>View Controls</h3>
+              <p>4 tools</p>
+            </div>
+            <i class="fa-solid fa-chevron-right"></i>
+          </div>
+
+          <div class="tool-list">
+            <div class="tool-row">
+              <span><i class="fa-solid fa-table-cells-large"></i></span>
+              <div><strong>Grid View</strong><p>Card-based layout</p></div>
+            </div>
+
+            <div class="tool-row">
+              <span><i class="fa-solid fa-list"></i></span>
+              <div><strong>List View</strong><p>Compact table view</p></div>
+            </div>
+
+            <div class="tool-row">
+              <span><i class="fa-solid fa-eye"></i></span>
+              <div><strong>Focus Mode</strong><p>Distraction-free view</p></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="group-card" data-category="ai">
+          <div class="group-head">
+            <div class="group-icon pink"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+            <div>
+              <h3>AI Content Assistant</h3>
+              <p>6 tools</p>
+            </div>
+            <i class="fa-solid fa-chevron-right"></i>
+          </div>
+
+          <div class="tool-list">
+            <div class="tool-row">
+              <span><i class="fa-solid fa-pen-nib"></i></span>
+              <div><strong>AI Writer</strong><p>Create posts, reports and captions</p></div>
+            </div>
+
+            <div class="tool-row">
+              <span><i class="fa-solid fa-language"></i></span>
+              <div><strong>Translator</strong><p>German, English, Dari and more</p></div>
+            </div>
+
+            <div class="tool-row">
+              <span><i class="fa-solid fa-file-lines"></i></span>
+              <div><strong>Summarizer</strong><p>Summarize long documents</p></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="group-card" data-category="export">
+          <div class="group-head">
+            <div class="group-icon cyan"><i class="fa-solid fa-download"></i></div>
+            <div>
+              <h3>Export Tools</h3>
+              <p>5 tools</p>
+            </div>
+            <i class="fa-solid fa-chevron-right"></i>
+          </div>
+
+          <div class="tool-list">
+            <div class="tool-row">
+              <span><i class="fa-regular fa-file-pdf"></i></span>
+              <div><strong>PDF Export</strong><p>Download professional reports</p></div>
+            </div>
+
+            <div class="tool-row">
+              <span><i class="fa-regular fa-file-word"></i></span>
+              <div><strong>Word Export</strong><p>Save editable documents</p></div>
+            </div>
+
+            <div class="tool-row">
+              <span><i class="fa-solid fa-share-nodes"></i></span>
+              <div><strong>Share Tools</strong><p>Share generated content</p></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="group-card" data-category="ai">
+          <div class="group-head">
+            <div class="group-icon amber"><i class="fa-solid fa-envelope"></i></div>
+            <div>
+              <h3>Email & Messaging</h3>
+              <p>7 tools</p>
+            </div>
+            <i class="fa-solid fa-chevron-right"></i>
+          </div>
+
+          <div class="tool-list">
+            <div class="tool-row">
+              <span><i class="fa-solid fa-envelope-open-text"></i></span>
+              <div><strong>Email Writer</strong><p>Formal and professional emails</p></div>
+            </div>
+
+            <div class="tool-row">
+              <span><i class="fa-solid fa-reply"></i></span>
+              <div><strong>Smart Reply</strong><p>Reply faster with AI</p></div>
+            </div>
+
+            <div class="tool-row">
+              <span><i class="fa-solid fa-comment-dots"></i></span>
+              <div><strong>Message Polisher</strong><p>Make messages clear and polite</p></div>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <footer class="site-footer">
+        <span>© 2026 naseriai. All Rights Reserved.</span>
+        <span>Designed &amp; Developed by <strong>Mohammad Baseet Naseri</strong></span>
+      </footer>
+
+    </main>
+  </div>
+
+  <script src="js/content-tools.js"></script>
+
+  <script src="js/safe-navigation.js"></script>
+  <script src="js/professional-sidebar.js"></script>
+  <script src="js/global-chat-history.js"></script>
+  <script src="js/chat-navigation-guard.js"></script>
+  <script src="js/spa-router.js"></script>
+</body>
+</html>

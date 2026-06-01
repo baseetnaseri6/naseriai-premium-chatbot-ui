@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NASERI AI - Dashboard</title>
+
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/dashboard.css" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/global-chat-history.css" />
+</head>
+
+<body>
+  <div class="dashboard-app">
+    <div class="dash-grid"></div>
+    <div class="dash-blob left"></div>
+    <div class="dash-blob right"></div>
+
+    <aside class="sidebar">
+      <div class="logo" onclick="safeHome()" title="Home">
+        <strong>N</strong>
+        <span>AI</span>
+      </div>
+
+      <nav class="nav">
+        <button class="active" data-label="Dashboard" onclick="goPage('dashboard.html')"><i class="fa-solid fa-table-cells-large"></i><small>Dashboard</small></button>
+        <button data-label="Chat" onclick="openGlobalChatHistory(event)"><i class="fa-solid fa-comments"></i><small>Chat</small></button>
+        <button data-label="Content Tools" onclick="goPage('content-tools.html')"><i class="fa-solid fa-wand-magic-sparkles"></i><small>Content Tools</small></button>
+        <button data-label="Analytics" onclick="goPage('analytics.html')"><i class="fa-solid fa-chart-line"></i><small>Analytics</small></button>
+        <button data-label="Subscription" onclick="goPage('subscription.html')"><i class="fa-solid fa-credit-card"></i><small>Subscription</small></button>
+        <button data-label="Settings" onclick="goPage('settings.html')"><i class="fa-solid fa-sliders"></i><small>Settings</small></button>
+      </nav>
+
+      <button class="premium">
+        <i class="fa-regular fa-gem"></i>
+        <small>Premium</small>
+      </button>
+    </aside>
+
+    <header class="dash-topbar">
+      <button class="dash-menu" id="mobileMenuBtn">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+
+      <div class="dash-search">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <input type="text" placeholder="Search..." />
+      </div>
+
+      <div class="dash-top-actions">
+        <button class="icon-btn"><i class="fa-regular fa-bell"></i><span></span></button>
+        <button class="avatar">B</button>
+      </div>
+    </header>
+
+    <aside class="dash-mobile-drawer" id="mobileDrawer">
+      <div class="drawer-header">
+        <div class="mobile-logo">
+          <strong>N</strong>
+          <span>AI</span>
+        </div>
+
+        <button id="closeMobileDrawer">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <div class="drawer-search">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <input type="text" placeholder="Search dashboard..." />
+      </div>
+
+      <nav class="drawer-nav">
+        <button class="active" onclick="goPage('dashboard.html')"><i class="fa-solid fa-table-cells-large"></i> Dashboard</button>
+        <button onclick="openGlobalChatHistory(event)"><i class="fa-solid fa-comments"></i> Chat</button>
+        <button onclick="goPage('content-tools.html')"><i class="fa-solid fa-wand-magic-sparkles"></i> Content Tools</button>
+        <button onclick="goPage('analytics.html')"><i class="fa-solid fa-chart-line"></i> Analytics</button>
+        <button onclick="goPage('subscription.html')"><i class="fa-solid fa-credit-card"></i> Subscription</button>
+        <button onclick="goPage('settings.html')"><i class="fa-solid fa-sliders"></i> Settings</button>
+      </nav>
+    </aside>
+
+    <div class="drawer-overlay" id="drawerOverlay"></div>
+
+    <main class="dashboard-main">
+      <section class="dashboard-title-row">
+        <div>
+          <h1>Dashboard</h1>
+          <p>Welcome back! Here's what's happening today.</p>
+        </div>
+
+        <div class="dashboard-actions">
+          <button class="outline-btn">
+            <i class="fa-regular fa-clock"></i>
+            Last 7 days
+          </button>
+
+          <button class="primary-btn">
+            <i class="fa-solid fa-arrow-trend-up"></i>
+            View Reports
+          </button>
+        </div>
+      </section>
+
+      <section class="metrics-grid">
+        <article class="metric-card">
+          <div>
+            <span>ACTIVE USERS</span>
+            <strong>12,543</strong>
+            <p>1,234 today</p>
+            <small class="up"><i class="fa-solid fa-arrow-trend-up"></i> +18.2% <em>vs last month</em></small>
+          </div>
+          <div class="metric-icon"><i class="fa-solid fa-users"></i></div>
+        </article>
+
+        <article class="metric-card purple">
+          <div>
+            <span>TOTAL REVENUE</span>
+            <strong>$45.2K</strong>
+            <p>$2.4K today</p>
+            <small class="up"><i class="fa-solid fa-arrow-trend-up"></i> +23.1% <em>vs last month</em></small>
+          </div>
+          <div class="metric-icon"><i class="fa-solid fa-dollar-sign"></i></div>
+        </article>
+
+        <article class="metric-card active-border">
+          <div>
+            <span>AI REQUESTS</span>
+            <strong>89.5K</strong>
+            <p>8.2K today</p>
+            <small class="down"><i class="fa-solid fa-arrow-trend-down"></i> -3.2% <em>vs last month</em></small>
+          </div>
+          <div class="metric-icon"><i class="fa-solid fa-brain"></i></div>
+        </article>
+
+        <article class="metric-card">
+          <div>
+            <span>SUCCESS RATE</span>
+            <strong>98.4%</strong>
+            <p>99.1% peak</p>
+            <small class="up"><i class="fa-solid fa-arrow-trend-up"></i> +2.1% <em>vs last month</em></small>
+          </div>
+          <div class="metric-icon"><i class="fa-solid fa-wave-square"></i></div>
+        </article>
+      </section>
+
+      <section class="charts-grid">
+        <article class="dash-panel large">
+          <div class="panel-header">
+            <div>
+              <h2>Usage Trends</h2>
+              <p>Monthly requests, tokens, and revenue</p>
+            </div>
+            <button><i class="fa-solid fa-ellipsis-vertical"></i></button>
+          </div>
+
+          <div class="line-chart">
+            <div class="chart-y">
+              <span>10000</span>
+              <span>7500</span>
+              <span>5000</span>
+              <span>2500</span>
+            </div>
+            <svg viewBox="0 0 760 300" preserveAspectRatio="none">
+              <path class="green-line" d="M35,220 C120,260 165,260 210,55 C260,-20 320,200 390,190 C470,180 500,130 565,160 C635,190 690,170 730,150"></path>
+              <path class="purple-line" d="M35,180 C130,210 190,260 270,245 C340,230 360,190 420,220 C500,260 560,240 630,220 C675,205 705,190 730,195"></path>
+
+              <circle class="green-dot" cx="210" cy="55" r="8"></circle>
+              <circle class="green-dot" cx="390" cy="190" r="7"></circle>
+              <circle class="green-dot" cx="565" cy="160" r="7"></circle>
+              <circle class="purple-dot" cx="35" cy="180" r="7"></circle>
+              <circle class="purple-dot" cx="270" cy="245" r="7"></circle>
+              <circle class="purple-dot" cx="630" cy="220" r="7"></circle>
+            </svg>
+          </div>
+        </article>
+
+        <article class="dash-panel">
+          <div class="panel-header">
+            <div>
+              <h2>Model Performance</h2>
+              <p>Usage by AI model</p>
+            </div>
+            <button><i class="fa-solid fa-ellipsis-vertical"></i></button>
+          </div>
+
+          <div class="bar-chart">
+            <div class="bar-y">
+              <span>6000</span>
+              <span>4500</span>
+              <span>3000</span>
+              <span>1500</span>
+            </div>
+
+            <div class="bars">
+              <div class="bar" style="height:78%"></div>
+              <div class="bar" style="height:55%"></div>
+              <div class="bar striped" style="height:30%"></div>
+              <div class="bar" style="height:38%"></div>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <section class="bottom-grid">
+        <article class="dash-panel activity-panel">
+          <div class="panel-header">
+            <div>
+              <h2>Recent Activity</h2>
+              <p>Latest system events</p>
+            </div>
+            <button><i class="fa-solid fa-ellipsis-vertical"></i></button>
+          </div>
+
+          <div class="activity-list">
+            <div class="activity-item">
+              <span class="activity-icon blue"><i class="fa-solid fa-check"></i></span>
+              <div><strong>New user registration</strong><p>john@example.com</p></div>
+              <time>2 min ago</time>
+            </div>
+
+            <div class="activity-item">
+              <span class="activity-icon amber"><i class="fa-solid fa-exclamation"></i></span>
+              <div><strong>API rate limit reached</strong><p>api-client-001</p></div>
+              <time>5 min ago</time>
+            </div>
+
+            <div class="activity-item">
+              <span class="activity-icon blue"><i class="fa-solid fa-check"></i></span>
+              <div><strong>Payment processed</strong><p>sarah@example.com</p></div>
+              <time>12 min ago</time>
+            </div>
+
+            <div class="activity-item">
+              <span class="activity-icon blue"><i class="fa-solid fa-check"></i></span>
+              <div><strong>Model training completed</strong><p>system</p></div>
+              <time>18 min ago</time>
+            </div>
+
+            <div class="activity-item">
+              <span class="activity-icon amber"><i class="fa-solid fa-exclamation"></i></span>
+              <div><strong>High token usage detected</strong><p>enterprise-001</p></div>
+              <time>25 min ago</time>
+            </div>
+          </div>
+        </article>
+
+        <article class="dash-panel models-panel">
+          <div class="panel-header">
+            <div>
+              <h2>Top AI Models</h2>
+              <p>Most used models this week</p>
+            </div>
+            <button><i class="fa-solid fa-ellipsis-vertical"></i></button>
+          </div>
+
+          <div class="model-list">
+            <div class="model-row">
+              <div class="model-top">
+                <div class="model-name">
+                  <span><i class="fa-solid fa-brain"></i></span>
+                  <strong>GPT-4 Turbo</strong>
+                  <em>Active</em>
+                </div>
+                <p>45.2K requests <b>1.2s avg</b></p>
+              </div>
+              <div class="progress"><i style="width:85%"></i></div>
+            </div>
+
+            <div class="model-row">
+              <div class="model-top">
+                <div class="model-name">
+                  <span><i class="fa-solid fa-brain"></i></span>
+                  <strong>Claude 3 Opus</strong>
+                  <em>Active</em>
+                </div>
+                <p>32.8K requests <b>0.9s avg</b></p>
+              </div>
+              <div class="progress"><i style="width:70%"></i></div>
+            </div>
+
+            <div class="model-row">
+              <div class="model-top">
+                <div class="model-name">
+                  <span><i class="fa-solid fa-brain"></i></span>
+                  <strong>Gemini Pro</strong>
+                  <em>Active</em>
+                </div>
+                <p>18.5K requests <b>1.5s avg</b></p>
+              </div>
+              <div class="progress"><i style="width:45%"></i></div>
+            </div>
+
+            <div class="model-row">
+              <div class="model-top">
+                <div class="model-name">
+                  <span><i class="fa-solid fa-brain"></i></span>
+                  <strong>GPT-3.5</strong>
+                  <em class="idle">Idle</em>
+                </div>
+                <p>12.1K requests <b>0.6s avg</b></p>
+              </div>
+              <div class="progress"><i style="width:30%"></i></div>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <section class="quick-actions">
+        <h2>Quick Actions</h2>
+
+        <div class="quick-grid">
+          <button onclick="goPage('content-tools.html')">
+            <i class="fa-solid fa-wand-magic-sparkles"></i>
+            Generate Content
+          </button>
+
+          <button onclick="goPage('index.html')">
+            <i class="fa-regular fa-message"></i>
+            Train Chatbot
+          </button>
+
+          <button>
+            <i class="fa-solid fa-code"></i>
+            Code Assistant
+          </button>
+
+          <button>
+            <i class="fa-regular fa-file-lines"></i>
+            View Analytics
+          </button>
+        </div>
+      </section>
+
+      <footer class="site-footer">
+        <span>© 2026 naseriai. All Rights Reserved.</span>
+        <span>Designed &amp; Developed by <strong>Mohammad Baseet Naseri</strong></span>
+      </footer>
+
+    </main>
+  </div>
+
+  <script src="js/dashboard.js"></script>
+
+  <script src="js/safe-navigation.js"></script>
+  <script src="js/professional-sidebar.js"></script>
+  <script src="js/global-chat-history.js"></script>
+  <script src="js/chat-navigation-guard.js"></script>
+  <script src="js/spa-router.js"></script>
+</body>
+</html>

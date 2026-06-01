@@ -1,0 +1,9 @@
+Add your screenshots here with these exact names:
+Loader.png
+Chat.png
+dashboard.png
+analytic.png
+content.png
+subscription.png
+setting.png
+Record.png

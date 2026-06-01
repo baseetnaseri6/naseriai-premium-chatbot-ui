@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NASERI AI - Subscription</title>
+
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/subscription.css" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/global-chat-history.css" />
+</head>
+
+<body>
+  <div class="subscription-app">
+    <div class="sub-grid"></div>
+    <div class="sub-blob left"></div>
+    <div class="sub-blob right"></div>
+
+    <aside class="sidebar">
+      <div class="logo" onclick="safeHome()" title="Home">
+        <strong>N</strong>
+        <span>AI</span>
+      </div>
+
+      <nav class="nav">
+        <button data-label="Dashboard" onclick="goPage('dashboard.html')"><i class="fa-solid fa-table-cells-large"></i><small>Dashboard</small></button>
+        <button data-label="Chat" onclick="openGlobalChatHistory(event)"><i class="fa-solid fa-comments"></i><small>Chat</small></button>
+        <button data-label="Content Tools" onclick="goPage('content-tools.html')"><i class="fa-solid fa-wand-magic-sparkles"></i><small>Content Tools</small></button>
+        <button data-label="Analytics" onclick="goPage('analytics.html')"><i class="fa-solid fa-chart-line"></i><small>Analytics</small></button>
+        <button class="active" data-label="Subscription" onclick="goPage('subscription.html')"><i class="fa-solid fa-credit-card"></i><small>Subscription</small></button>
+        <button data-label="Settings" onclick="goPage('settings.html')"><i class="fa-solid fa-sliders"></i><small>Settings</small></button>
+      </nav>
+
+      <button class="premium">
+        <i class="fa-regular fa-gem"></i>
+        <small>Premium</small>
+      </button>
+    </aside>
+
+    <header class="sub-topbar">
+      <button class="sub-menu" id="mobileMenuBtn">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+
+      <div class="sub-search">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <input type="text" placeholder="Search..." />
+      </div>
+
+      <div class="sub-top-actions">
+        <button class="icon-btn"><i class="fa-regular fa-bell"></i><span></span></button>
+        <button class="avatar">B</button>
+      </div>
+    </header>
+
+    <aside class="sub-mobile-drawer" id="mobileDrawer">
+      <div class="drawer-header">
+        <div class="mobile-logo">
+          <strong>N</strong>
+          <span>AI</span>
+        </div>
+
+        <button id="closeMobileDrawer">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <div class="drawer-search">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <input type="text" placeholder="Search..." />
+      </div>
+
+      <nav class="drawer-nav">
+        <button onclick="goPage('dashboard.html')"><i class="fa-solid fa-table-cells-large"></i> Dashboard</button>
+        <button onclick="openGlobalChatHistory(event)"><i class="fa-solid fa-comments"></i> Chat</button>
+        <button onclick="goPage('content-tools.html')"><i class="fa-solid fa-wand-magic-sparkles"></i> Content Tools</button>
+        <button onclick="goPage('analytics.html')"><i class="fa-solid fa-chart-line"></i> Analytics</button>
+        <button class="active" onclick="goPage('subscription.html')"><i class="fa-solid fa-credit-card"></i> Subscription</button>
+        <button onclick="goPage('settings.html')"><i class="fa-solid fa-sliders"></i> Settings</button>
+      </nav>
+    </aside>
+
+    <div class="drawer-overlay" id="drawerOverlay"></div>
+
+    <main class="sub-main">
+      <section class="sub-title">
+        <h1>Choose a Plan</h1>
+        <p>Scale your AI capabilities with plans designed for every stage of your journey</p>
+      </section>
+
+      <section class="sub-stats">
+        <article>
+          <span class="stat-icon purple"><i class="fa-regular fa-star"></i></span>
+          <div><small>CURRENT PLAN</small><strong>Professional</strong></div>
+        </article>
+        <article>
+          <span class="stat-icon blue"><i class="fa-solid fa-arrow-trend-up"></i></span>
+          <div><small>REQUESTS USED</small><strong>32,450 / 50,000</strong></div>
+        </article>
+        <article>
+          <span class="stat-icon purple"><i class="fa-regular fa-calendar"></i></span>
+          <div><small>NEXT BILLING</small><strong>Dec 18, 2025</strong></div>
+        </article>
+        <article>
+          <span class="stat-icon green"><i class="fa-regular fa-credit-card"></i></span>
+          <div><small>TOTAL SPENT</small><strong>$294</strong></div>
+        </article>
+      </section>
+
+      <section class="plans-grid">
+        <article class="plan-card">
+          <div class="plan-icon blue"><i class="fa-solid fa-bolt"></i></div>
+          <h2>Starter</h2>
+          <p>For evaluating the dashboard and chatbot UI</p>
+          <div class="price">Free <span>forever</span></div>
+          <button class="outline-plan">Get Started <i class="fa-solid fa-arrow-right"></i></button>
+          <ul>
+            <li><i class="fa-solid fa-check"></i> 1,000 AI requests/month</li>
+            <li><i class="fa-solid fa-check"></i> Basic chatbot</li>
+            <li><i class="fa-solid fa-check"></i> Community support</li>
+          </ul>
+        </article>
+
+        <article class="plan-card popular">
+          <div class="popular-badge">MOST POPULAR</div>
+          <div class="plan-icon purple"><i class="fa-solid fa-rocket"></i></div>
+          <h2>Professional</h2>
+          <p>For professionals and growing teams</p>
+          <div class="price">$49 <span>/month</span></div>
+          <button class="primary-plan">Upgrade Now <i class="fa-solid fa-arrow-right"></i></button>
+          <ul>
+            <li><i class="fa-solid fa-check"></i> 50,000 AI requests/month</li>
+            <li><i class="fa-solid fa-check"></i> Advanced chatbot</li>
+            <li><i class="fa-solid fa-check"></i> Analytics dashboard</li>
+            <li><i class="fa-solid fa-check"></i> Priority support</li>
+          </ul>
+        </article>
+
+        <article class="plan-card">
+          <div class="plan-icon amber"><i class="fa-regular fa-crown"></i></div>
+          <h2>Enterprise</h2>
+          <p>For large teams and organizations</p>
+          <div class="price">$199 <span>/month</span></div>
+          <button class="outline-plan">Contact Sales <i class="fa-solid fa-arrow-right"></i></button>
+          <ul>
+            <li><i class="fa-solid fa-check"></i> Unlimited AI requests</li>
+            <li><i class="fa-solid fa-check"></i> Custom AI models</li>
+            <li><i class="fa-solid fa-check"></i> SSO and team seats</li>
+            <li><i class="fa-solid fa-check"></i> Dedicated manager</li>
+          </ul>
+        </article>
+      </section>
+
+      <section class="why-section">
+        <h2>Why Choose Our Platform?</h2>
+        <p>Everything you need to power your AI applications</p>
+
+        <div class="why-grid">
+          <article><span class="amber"><i class="fa-solid fa-bolt"></i></span><h3>Responsive UI</h3><p>Layout and components scale for common desktop and mobile breakpoints</p></article>
+          <article><span class="green"><i class="fa-solid fa-shield-halved"></i></span><h3>Security section</h3><p>Placeholder copy for policies—wire to your auth, hosting, and compliance docs</p></article>
+          <article><span class="blue"><i class="fa-regular fa-clock"></i></span><h3>Support block</h3><p>Template area for help links or contact options you configure</p></article>
+          <article><span class="purple"><i class="fa-solid fa-users"></i></span><h3>Team seats</h3><p>Illustrative plan limits—replace with your billing model</p></article>
+        </div>
+      </section>
+
+      <section class="faq-section">
+        <h2>Frequently Asked Questions</h2>
+
+        <div class="faq-grid">
+          <div class="faq-item"><i class="fa-solid fa-circle-info"></i><div><h3>Can I change plans anytime?</h3><p>Yes, you can upgrade or downgrade your plan at any time. Changes take effect immediately.</p></div></div>
+          <div class="faq-item"><i class="fa-solid fa-circle-info"></i><div><h3>What payment methods do you accept?</h3><p>We accept all major credit cards, PayPal, and wire transfers for enterprise plans.</p></div></div>
+          <div class="faq-item"><i class="fa-solid fa-circle-info"></i><div><h3>Is there a free trial?</h3><p>Our Starter plan is free forever. Professional and Enterprise plans offer 14-day trials.</p></div></div>
+          <div class="faq-item"><i class="fa-solid fa-circle-info"></i><div><h3>What happens if I exceed my limit?</h3><p>You'll be notified and can upgrade your plan or purchase additional requests as needed.</p></div></div>
+        </div>
+      </section>
+
+      <section class="cta-section">
+        <h2>Ready to Get Started?</h2>
+        <p>Illustrative pricing UI—replace copy and limits with your product rules.</p>
+        <div>
+          <button class="primary-plan"><i class="fa-solid fa-wand-magic-sparkles"></i> Start trial</button>
+          <button class="outline-plan">Contact Sales</button>
+        </div>
+      </section>
+
+      <footer class="site-footer">
+        <span>© 2026 naseriai. All Rights Reserved.</span>
+        <span>Designed &amp; Developed by <strong>Mohammad Baseet Naseri</strong></span>
+      </footer>
+
+    </main>
+  </div>
+
+  <script src="js/subscription.js"></script>
+  
+  <script src="js/safe-navigation.js"></script>
+  <script src="js/professional-sidebar.js"></script>
+  <script src="js/global-chat-history.js"></script>
+  <script src="js/chat-navigation-guard.js"></script>
+  <script src="js/spa-router.js"></script>
+</body>
+</html>
